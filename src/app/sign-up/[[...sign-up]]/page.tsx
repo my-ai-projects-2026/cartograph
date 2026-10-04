@@ -1,9 +1,10 @@
 import { SignUp } from "@clerk/nextjs";
+import { AuthFrame } from "@/ui/auth-frame";
 
 export default function SignUpPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <AuthFrame>
       <SignUp />
-    </div>
+    </AuthFrame>
   );
 }

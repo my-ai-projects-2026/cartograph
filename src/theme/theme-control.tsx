@@ -21,7 +21,7 @@ export function ThemeControl({ initial }: { initial: ThemeChoice }) {
   const [choice, setChoice] = useState(initial);
 
   return (
-    <div role="radiogroup" aria-label="Theme" className="flex border border-line">
+    <div role="radiogroup" aria-label="Theme" className="flex gap-px rounded-[3px] border border-line p-px text-[11px]">
       {CHOICES.map((option) => (
         <button
           key={option}
@@ -34,8 +34,8 @@ export function ThemeControl({ initial }: { initial: ThemeChoice }) {
           }}
           className={
             choice === option
-              ? "bg-raised px-1.5 py-0.5 text-fg"
-              : "px-1.5 py-0.5 text-muted hover:text-fg"
+              ? "rounded-[2px] bg-raised px-1.5 py-px text-fg"
+              : "rounded-[2px] px-1.5 py-px text-muted hover:text-fg"
           }
         >
           {option}

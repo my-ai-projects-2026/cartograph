@@ -11,4 +11,6 @@ function required(name: string): string {
 export const env = {
   clerkPublishableKey: required("NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY"),
   clerkSecretKey: required("CLERK_SECRET_KEY"),
+  supabaseUrl: required("NEXT_PUBLIC_SUPABASE_URL"),
+  supabasePublishableKey: required("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"),
 };

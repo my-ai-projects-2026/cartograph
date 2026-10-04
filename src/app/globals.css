@@ -1,40 +1,50 @@
+/* Clerk's styles sit in their own layer, below utilities, so Tailwind's reset
+   doesn't flatten them and our utilities can still override them. */
+@layer theme, base, clerk, components, utilities;
 @import "tailwindcss";
 
 /*
  * Colour tokens. Surfaces, borders and text are greyscale; the accent is the
  * only hue so far. Light is the default; dark applies when the user forces it,
  * or when the system is dark and the user hasn't forced light.
+ * `rule` is the faint divider between rows; `line` frames regions.
  */
 :root {
   color-scheme: light;
-  --surface: #fafafa;
-  --raised: #efefef;
-  --line: #dedede;
-  --fg: #18181a;
-  --muted: #6a6a70;
+  --surface: #fbfbfa;
+  --raised: #f1f1f0;
+  --line: #dddddb;
+  --rule: #ececea;
+  --fg: #1a1a1c;
+  --muted: #6b6b70;
+  --faint: #9d9da2;
   --accent: #2563eb;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --surface: #0e0e10;
-    --raised: #1b1b1e;
-    --line: #2b2b2f;
-    --fg: #e4e4e7;
-    --muted: #8c8c94;
-    --accent: #5b93ff;
+    --surface: #111113;
+    --raised: #1c1c1f;
+    --line: #2e2e33;
+    --rule: #202024;
+    --fg: #e6e6e8;
+    --muted: #8d8d95;
+    --faint: #5f5f66;
+    --accent: #6b9bff;
   }
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface: #0e0e10;
-  --raised: #1b1b1e;
-  --line: #2b2b2f;
-  --fg: #e4e4e7;
-  --muted: #8c8c94;
-  --accent: #5b93ff;
+  --surface: #111113;
+  --raised: #1c1c1f;
+  --line: #2e2e33;
+  --rule: #202024;
+  --fg: #e6e6e8;
+  --muted: #8d8d95;
+  --faint: #5f5f66;
+  --accent: #6b9bff;
 }
 
 /* Clerk's components read these, so sign-in follows the same tokens and theme. */
@@ -47,19 +57,22 @@
   --clerk-color-input-foreground: var(--fg);
   --clerk-color-border: var(--line);
   --clerk-color-neutral: var(--fg);
+  --clerk-font-family: var(--font-plex-sans);
   --clerk-font-size: 13px;
-  --clerk-border-radius: 2px;
+  --clerk-border-radius: 3px;
 }
 
 @theme inline {
   --color-surface: var(--surface);
   --color-raised: var(--raised);
   --color-line: var(--line);
+  --color-rule: var(--rule);
   --color-fg: var(--fg);
   --color-muted: var(--muted);
+  --color-faint: var(--faint);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
 }
 
 body {
@@ -67,4 +80,10 @@ body {
   color: var(--fg);
   font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 13px;
+  line-height: 1.45;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
 }

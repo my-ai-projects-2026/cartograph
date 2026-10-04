@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
+/*
+ * Colour tokens. Surfaces, borders and text are greyscale; the accent is the
+ * only hue so far. Light is the default; dark applies when the user forces it,
+ * or when the system is dark and the user hasn't forced light.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --surface: #fafafa;
+  --raised: #efefef;
+  --line: #dedede;
+  --fg: #18181a;
+  --muted: #6a6a70;
+  --accent: #2563eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface: #0e0e10;
+    --raised: #1b1b1e;
+    --line: #2b2b2f;
+    --fg: #e4e4e7;
+    --muted: #8c8c94;
+    --accent: #5b93ff;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #0e0e10;
+  --raised: #1b1b1e;
+  --line: #2b2b2f;
+  --fg: #e4e4e7;
+  --muted: #8c8c94;
+  --accent: #5b93ff;
+}
+
+/* Clerk's components read these, so sign-in follows the same tokens and theme. */
+:root {
+  --clerk-color-primary: var(--accent);
+  --clerk-color-background: var(--surface);
+  --clerk-color-foreground: var(--fg);
+  --clerk-color-muted-foreground: var(--muted);
+  --clerk-color-input: var(--surface);
+  --clerk-color-input-foreground: var(--fg);
+  --clerk-color-border: var(--line);
+  --clerk-color-neutral: var(--fg);
+  --clerk-font-size: 13px;
+  --clerk-border-radius: 2px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 13px;
 }

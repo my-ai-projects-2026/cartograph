@@ -7,11 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "parse": "node scripts/parse.mts"
+    "parse": "node scripts/parse.mts",
+    "fold-check": "node scripts/fold-check.mts"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.10",
+    "@dagrejs/dagre": "^3.1.1",
     "@supabase/supabase-js": "^2.117.2",
+    "@xyflow/react": "^12.12.0",
     "next": "16.3.8",
     "react": "19.2.8",
     "react-dom": "19.2.8",

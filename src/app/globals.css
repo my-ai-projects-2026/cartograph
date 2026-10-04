@@ -5,7 +5,8 @@
 
 /*
  * Colour tokens. Surfaces, borders and text are greyscale; the accent is the
- * only hue so far. Light is the default; dark applies when the user forces it,
+ * only interactive hue. Green and amber are direction: into and out of
+ * whatever is selected. Light is the default; dark applies when the user forces it,
  * or when the system is dark and the user hasn't forced light.
  * `rule` is the faint divider between rows; `line` frames regions.
  */
@@ -19,6 +20,12 @@
   --muted: #6b6b70;
   --faint: #9d9da2;
   --accent: #2563eb;
+  --incoming: #15803d;
+  --outgoing: #b45309;
+  /* The map renders scaled down, where light-mode greys wash out; these sit darker. */
+  --canvas-meta: #45454b;
+  --canvas-edge: #85858b;
+  --canvas-border: #b4b4b2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,6 +39,11 @@
     --muted: #8d8d95;
     --faint: #5f5f66;
     --accent: #6b9bff;
+    --incoming: #4ade80;
+    --outgoing: #f5a524;
+    --canvas-meta: #8d8d95;
+    --canvas-edge: #5f5f66;
+    --canvas-border: #2e2e33;
   }
 }
 
@@ -45,6 +57,11 @@
   --muted: #8d8d95;
   --faint: #5f5f66;
   --accent: #6b9bff;
+  --incoming: #4ade80;
+  --outgoing: #f5a524;
+  --canvas-meta: #8d8d95;
+  --canvas-edge: #5f5f66;
+  --canvas-border: #2e2e33;
 }
 
 /* Clerk's components read these, so sign-in follows the same tokens and theme. */
@@ -71,6 +88,11 @@
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-accent: var(--accent);
+  --color-incoming: var(--incoming);
+  --color-outgoing: var(--outgoing);
+  --color-canvas-meta: var(--canvas-meta);
+  --color-canvas-edge: var(--canvas-edge);
+  --color-canvas-border: var(--canvas-border);
   --font-sans: var(--font-plex-sans);
   --font-mono: var(--font-plex-mono);
 }
